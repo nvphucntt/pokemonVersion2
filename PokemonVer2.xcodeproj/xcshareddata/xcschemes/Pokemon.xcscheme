@@ -16,9 +16,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "FE17F08B2E87EA38000677E2"
-               BuildableName = "Pokemon.app"
-               BlueprintName = "Pokemon"
-               ReferencedContainer = "container:Pokemon.xcodeproj">
+               BuildableName = "PokemonVer2.app"
+               BlueprintName = "PokemonVer2"
+               ReferencedContainer = "container:PokemonVer2.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,9 +45,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FE17F08B2E87EA38000677E2"
-            BuildableName = "Pokemon.app"
-            BlueprintName = "Pokemon"
-            ReferencedContainer = "container:Pokemon.xcodeproj">
+            BuildableName = "PokemonVer2.app"
+            BlueprintName = "PokemonVer2"
+            ReferencedContainer = "container:PokemonVer2.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FE17F08B2E87EA38000677E2"
-            BuildableName = "Pokemon.app"
-            BlueprintName = "Pokemon"
-            ReferencedContainer = "container:Pokemon.xcodeproj">
+            BuildableName = "PokemonVer2.app"
+            BlueprintName = "PokemonVer2"
+            ReferencedContainer = "container:PokemonVer2.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
@@ -73,6 +73,7 @@
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Release"
+      customArchiveName = "PokemonVer2"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>
