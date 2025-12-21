@@ -44,8 +44,7 @@ class ViewController: UIViewController {
     var activityIndicator: NVActivityIndicatorView!
     var isExpandHome2: Bool = false
     
-    
-    @IBOutlet weak var countPassword: UILabel!
+    @IBOutlet weak var countOTP: UILabel!
     
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var tab2CollapseView: UIImageView!
@@ -56,6 +55,12 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var constraintTab3_02_topTop: NSLayoutConstraint!
     
+    @IBOutlet weak var emailLabel: UILabel!
+    
+    @IBOutlet weak var userNameView: UIView!
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passEmailTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
@@ -65,10 +70,33 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
-        self.countPassword.text = "\(DataStore.shared.countPassword)"
+        self.countOTP.text = "\(DataStore.shared.countPassword)"
         if DataStore.shared.checkIfOver24hTokyo() {
             DataStore.shared.update(isLogin: false)
         }
+        let email = DataStore.shared.userName
+        self.emailLabel.text = email
+        self.userNameView.isHidden = (DataStore.shared.listUserName.contains(email))
+        
+        switch email {
+        case "phudano1":
+            DataStore.shared.allPass = DataStore.shared.allPass1
+        case "phudano2":
+            DataStore.shared.allPass = DataStore.shared.allPass2
+        case "phudano3":
+            DataStore.shared.allPass = DataStore.shared.allPass3
+        case "phudano4":
+            DataStore.shared.allPass = DataStore.shared.allPass4
+        case "phudano5":
+            DataStore.shared.allPass = DataStore.shared.allPass5
+        case "phudano6":
+            DataStore.shared.allPass = DataStore.shared.allPass6
+        default:
+            DataStore.shared.allPass = DataStore.shared.allPass1
+        }
+        
+        self.emailTextField.text = DataStore.shared.userName
+        
         self.isValidView.isHidden = DataStore.shared.isLogin
         self.emptyView.isHidden = !DataStore.shared.isAfterEventDate()
         
@@ -192,20 +220,42 @@ class ViewController: UIViewController {
         DataStore.shared.update(isLogin: isValid)
     }
     
-    func checkPassword(_ password: String, validView: UIView) -> Bool {
-        view.endEditing(true)
-        if password == DataStore.shared.currentPass() {
-            let count = DataStore.shared.countPassword
-            let x = count + 1
-            DataStore.shared.update(countPassword: x)
-            validView.isHidden = true
-            return true
+    @IBAction func didTappedValidateUserName(_ sender: Any) {
+        let email = self.emailTextField.text ?? ""
+        let passEmail = self.passEmailTextField.text ?? ""
+        if passEmail == DataStore.shared.currentPass() {
+            if DataStore.shared.listUserName.contains(email) {
+                switch email {
+                case "phudano1":
+                    DataStore.shared.allPass = DataStore.shared.allPass1
+                case "phudano2":
+                    DataStore.shared.allPass = DataStore.shared.allPass2
+                case "phudano3":
+                    DataStore.shared.allPass = DataStore.shared.allPass3
+                case "phudano4":
+                    DataStore.shared.allPass = DataStore.shared.allPass4
+                case "phudano5":
+                    DataStore.shared.allPass = DataStore.shared.allPass5
+                case "phudano6":
+                    DataStore.shared.allPass = DataStore.shared.allPass6
+                default:
+                    DataStore.shared.allPass = DataStore.shared.allPass1
+                }
+                
+                showLoadingView()
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                    self.userNameView.isHidden = true
+                }
+                DataStore.shared.update(userName: email)
+                self.emailLabel.text = email
+            } else {
+                showWrongEmailAlert(on: self)
+            }
         } else {
-            validView.isHidden = false
-            return false
+            showWrongEmailAlert(on: self)
         }
     }
-    
     
     @IBAction func didTappedHomeButton(_ sender: Any) {
         self.tab3ScrollView.setContentOffset(.zero, animated: false)
@@ -273,6 +323,24 @@ class ViewController: UIViewController {
         showCouponAlert(on: self)
     }
     
+    func checkPassword(_ password: String, validView: UIView) -> Bool {
+        view.endEditing(true)
+        if DataStore.shared.checkPass(pass: password) {
+            let count = DataStore.shared.countPassword
+            let x = count + 1
+            DataStore.shared.update(countPassword: x)
+            
+            showLoadingView()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                validView.isHidden = true
+            }
+            return true
+        } else {
+            validView.isHidden = false
+            return false
+        }
+    }
+    
     func showCouponAlert(on viewController: UIViewController) {
         let title = "クーポンを利用しますか"
         
@@ -301,8 +369,18 @@ class ViewController: UIViewController {
     
     func showWrongPasswordAlert(on viewController: UIViewController) {
         let alert = UIAlertController(
-            title: "Sai mật khẩu rồi",
-            message: "Nhập lại đi mày 😅",
+            title: "ERROR",
+            message: "OTP đã được sử dụng \n Vui lòng thử lại.",
+            preferredStyle: .alert
+        )
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        viewController.present(alert, animated: true)
+    }
+    
+    func showWrongEmailAlert(on viewController: UIViewController) {
+        let alert = UIAlertController(
+            title: "ERROR",
+            message: "Email hoặc mật khẩu không đúng \n Vui lòng thử lại.",
             preferredStyle: .alert
         )
         alert.addAction(UIAlertAction(title: "OK", style: .default))
