@@ -223,7 +223,7 @@ class DataStore {
     }
     
     func currentPass(for date: Date = Date()) -> String {
-        let passes = ["12345678", "22222222", "88888888", "44444444"]
+        let passes = ["123456", "324522", "398264","614705","972830","247168", "947680","285914","463592","791028","150486","826593"]
         
         // TimeZone Tokyo
         let tokyoTimeZone = TimeZone(identifier: "Asia/Tokyo")!
@@ -231,10 +231,10 @@ class DataStore {
         calendar.timeZone = tokyoTimeZone
         
         var startComponents = DateComponents()
-        startComponents.year = 2025
-        startComponents.month = 12
-        startComponents.day = 21
-        startComponents.hour = 0
+        startComponents.year = 2026
+        startComponents.month = 1
+        startComponents.day = 9
+        startComponents.hour = 10
         startComponents.minute = 0
         startComponents.second = 0
         startComponents.timeZone = tokyoTimeZone
@@ -257,7 +257,7 @@ class DataStore {
         var components = DateComponents()
         components.year = 2026
         components.month = 01
-        components.day = 12
+        components.day = 10
         components.hour = 0
         components.minute = 0
         components.second = 1
