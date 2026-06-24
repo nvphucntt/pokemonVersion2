@@ -9,12 +9,11 @@ import UIKit
 import NVActivityIndicatorView
 
 enum Status {
-    case home
-    case qr1
-    case qr2
-    case qrDone
-    case home2
-    case home4
+    case tab1
+    case tab2
+    case tab3
+    case tab4
+    case tab5
     
 }
 
@@ -24,14 +23,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var tab02: UIView!
     @IBOutlet weak var tab03: UIView!
     @IBOutlet weak var tab04: UIView!
-    
+    @IBOutlet weak var tab05: UIView!
     @IBOutlet weak var tabbarImageView: UIImageView!
-    
-    @IBOutlet weak var downloadButton: UIButton!
-    @IBOutlet weak var qrButton: UIButton!
-    @IBOutlet weak var numberQRImageView: UIImageView!
-    
-    @IBOutlet weak var firstTab3ImageView: UIImageView!
     
     @IBOutlet weak var tab3ScrollView: UIScrollView!
     
@@ -40,26 +33,25 @@ class ViewController: UIViewController {
     @IBOutlet weak var topLineView: UIView!
     
     let screenBounds = UIScreen.main.bounds
-    var statusHome: Status = .home
+    var statusHome: Status = .tab1
     var activityIndicator: NVActivityIndicatorView!
-    var isExpandHome2: Bool = false
     
     @IBOutlet weak var countOTP: UILabel!
     
     @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var tab2CollapseView: UIImageView!
     @IBOutlet weak var tab2ExpandView: UIScrollView!
-    
-    @IBOutlet weak var constraintTab3FisrtTopTop: NSLayoutConstraint!
-    @IBOutlet weak var constraintTab3FirstTopBottom: NSLayoutConstraint!
-    
-    @IBOutlet weak var constraintTab3_02_topTop: NSLayoutConstraint!
     
     @IBOutlet weak var emailLabel: UILabel!
     
     @IBOutlet weak var userNameView: UIView!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passEmailTextField: UITextField!
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        get {
+            return .lightContent
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,10 +89,10 @@ class ViewController: UIViewController {
         
         self.emailTextField.text = DataStore.shared.userName
         
-        self.isValidView.isHidden = DataStore.shared.isLogin
-        self.emptyView.isHidden = !DataStore.shared.isAfterEventDate()
+        self.isValidView.isHidden = true
+        self.emptyView.isHidden = true
         
-        self.statusHome = .home
+        self.statusHome = .tab1
         if DataStore.shared.isComplete {
             self.showLoadingView()
             
@@ -108,9 +100,6 @@ class ViewController: UIViewController {
             
         }
         self.configUI()
-        self.numberQRImageView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner, .layerMaxXMaxYCorner]
-        numberQRImageView.layer.cornerRadius = 32.5
-        numberQRImageView.clipsToBounds = true
     }
     
     @objc func dismissKeyboard() {
@@ -135,76 +124,43 @@ class ViewController: UIViewController {
     }
     
     func configUI() {
-        self.isExpandHome2 = false
         
         switch self.statusHome {
-        case .home:
+        case .tab1:
             tab01.isHidden = false
             tab02.isHidden = true
             tab03.isHidden = true
             tab04.isHidden = true
+            tab05.isHidden = true
             tabbarImageView.image = UIImage(named: "tab_home_01")
-        case .home2:
+        case .tab2:
             tab01.isHidden = true
             tab02.isHidden = false
             tab03.isHidden = true
             tab04.isHidden = true
+            tab05.isHidden = true
             tabbarImageView.image = UIImage(named: "tab_home_02")
-        case .qr1:
+        case .tab3:
             tab01.isHidden = true
             tab02.isHidden = true
             tab03.isHidden = false
             tab04.isHidden = true
+            tab05.isHidden = true
             tabbarImageView.image = UIImage(named: "tab_home_03")
-            constraintTab3FisrtTopTop.constant = 0
-            self.constraintTab3FirstTopBottom.constant = 0
-            self.firstTab3ImageView.isHidden = false
-            self.constraintTab3FirstTopBottom.priority = UILayoutPriority(1000)
-            self.constraintTab3_02_topTop.priority = UILayoutPriority(250)
-            
-            downloadButton.isUserInteractionEnabled = true
-            qrButton.isUserInteractionEnabled = false
-            qrButton.backgroundColor = UIColor.color(rgb: 0xD8D8D8)
-            numberQRImageView.image = UIImage(named: "tab3_button_04")
-            self.firstTab3ImageView.image = UIImage(named: "tab3_first")
-        case .qr2:
-            tab01.isHidden = true
-            tab02.isHidden = true
-            tab03.isHidden = false
-            tab04.isHidden = true
-            tabbarImageView.image = UIImage(named: "tab_home_03")
-            self.constraintTab3FisrtTopTop.constant = -0.5
-            self.constraintTab3FirstTopBottom.constant = 0.5
-            self.firstTab3ImageView.isHidden = false
-            self.constraintTab3FirstTopBottom.priority = UILayoutPriority(1000)
-            self.constraintTab3_02_topTop.priority = UILayoutPriority(250)
-            
-            downloadButton.isUserInteractionEnabled = true
-            qrButton.isUserInteractionEnabled = true
-            qrButton.backgroundColor = UIColor.color(rgb: 0xE60012)
-            numberQRImageView.image = UIImage(named: "tab3_button_03")
-            self.firstTab3ImageView.image = UIImage(named: "tab3_first_downloaded")
-        case .home4:
+        case .tab4:
             tab01.isHidden = true
             tab02.isHidden = true
             tab03.isHidden = true
             tab04.isHidden = false
+            tab05.isHidden = true
             tabbarImageView.image = UIImage(named: "tab_home_04")
-        case .qrDone:
+        case .tab5:
             tab01.isHidden = true
             tab02.isHidden = true
-            tab03.isHidden = false
+            tab03.isHidden = true
             tab04.isHidden = true
-            tabbarImageView.image = UIImage(named: "tab_home_03")
-            
-//            self.firstTab3ImageView.isHidden = true
-//            self.constraintTab3FirstTopBottom.priority = UILayoutPriority(250)
-//            self.constraintTab3_02_topTop.priority = UILayoutPriority(1000)
-            downloadButton.isUserInteractionEnabled = true
-            qrButton.isUserInteractionEnabled = false
-            qrButton.backgroundColor = UIColor.color(rgb: 0xE60012)
-            numberQRImageView.image = UIImage(named: "tab3_button_04")
-            self.firstTab3ImageView.image = UIImage(named: "tab3_first_done")
+            tab05.isHidden = false
+            tabbarImageView.image = UIImage(named: "tab_home_05")
         }
     }
     
@@ -250,77 +206,43 @@ class ViewController: UIViewController {
                 DataStore.shared.update(userName: email)
                 self.emailLabel.text = email
             } else {
+                self.userNameView.isHidden = true
                 showWrongEmailAlert(on: self)
             }
         } else {
+            self.userNameView.isHidden = true
             showWrongEmailAlert(on: self)
         }
     }
     
-    @IBAction func didTappedHomeButton(_ sender: Any) {
+    @IBAction func didTappedTab01(_ sender: Any) {
         self.tab3ScrollView.setContentOffset(.zero, animated: false)
-        self.statusHome = .home
+        self.statusHome = .tab1
         configUI()
     }
     
-    @IBAction func didTappedHome2Button(_ sender: Any) {
+    @IBAction func didTappedTab2(_ sender: Any) {
         self.tab3ScrollView.setContentOffset(.zero, animated: false)
-        self.isExpandHome2 = false
-        updateUIHome2()
-        self.statusHome = .home2
+        self.statusHome = .tab2
         configUI()
     }
     
-    @IBAction func didTappedQrButton(_ sender: Any) {
-        if DataStore.shared.isComplete {
-            self.statusHome = .qrDone
-        } else {
-            self.statusHome = .qr1
-        }
-        configUI()
-    }
-    
-    @IBAction func didTappedHome4Button(_ sender: Any) {
+    @IBAction func didTappedTab03(_ sender: Any) {
         self.tab3ScrollView.setContentOffset(.zero, animated: false)
-        self.statusHome = .home4
+        self.statusHome = .tab3
         configUI()
     }
     
-    @IBAction func didTappedHome5Button(_ sender: Any) {
-        if let url = URL(string: "https://auth.7id.omni7.jp/login-id/input?appid=bpc&userhash=GZKS74DFBQP6VCNTDWUWAER732PBZGPIV2AGS6I&ts=1762610319&tn=1762610319342GZKS74DFBQP6VCNTDWUWAER732PBZGPIV2AGS6I990&sig=2333f9b4d35c95909b17bfdb9827bee74a0a56de&ksappcd=03&ksappsitecd=0003&r_url=&utmparam=utm_campaign%3Diy_7mp%26utm_medium%3Dapp%26utm_source%3Dapp_iy") {
-            UIApplication.shared.open(url, options: [:], completionHandler: nil)
-        }
-    }
-    
-    @IBAction func didTappedExpandHome2Button(_ sender: Any) {
-        self.isExpandHome2 = true
-        updateUIHome2()
-    }
-    
-    func updateUIHome2() {
-        if self.isExpandHome2 {
-            tab2ExpandView.isHidden = false
-            tab2CollapseView.isHidden = true
-        } else {
-            tab2ExpandView.isHidden = true
-            tab2CollapseView.isHidden = false
-        }
-    }
-    
-    @IBAction func didTappedDownloadButton(_ sender: Any) {
-        if self.statusHome == .qr1 {
-            self.statusHome = .qr2
-        } else if self.statusHome == .qr2 {
-            self.statusHome = .qr1
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            self.configUI()
-        }
-    }
-    
-    @IBAction func didTappedShowCoupon(_ sender: Any) {
+    @IBAction func didTappedTab04(_ sender: Any) {
+        self.tab3ScrollView.setContentOffset(.zero, animated: false)
+        self.statusHome = .tab4
         configUI()
-        showCouponAlert(on: self)
+    }
+    
+    @IBAction func didTappedTab05(_ sender: Any) {
+        self.tab3ScrollView.setContentOffset(.zero, animated: false)
+        self.statusHome = .tab5
+        configUI()
     }
     
     func checkPassword(_ password: String, validView: UIView) -> Bool {
@@ -336,7 +258,7 @@ class ViewController: UIViewController {
             }
             return true
         } else {
-            validView.isHidden = false
+            validView.isHidden = true
             return false
         }
     }
