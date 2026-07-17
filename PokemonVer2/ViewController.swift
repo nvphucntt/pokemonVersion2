@@ -87,7 +87,7 @@ class ViewController: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: animated)
         self.countOTP.text = "\(DataStore.shared.countPassword)"
         if DataStore.shared.maxCount == 0 {
-            DataStore.shared.update(maxCount: 30)
+            DataStore.shared.update(maxCount: 5)
         }
         if DataStore.shared.countPassword <= DataStore.shared.maxCount {
             self.emptyView.isHidden = !DataStore.shared.isAfterEventDate()
