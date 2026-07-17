@@ -17,99 +17,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Cu-bh-pRd">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="OTP" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QN4-jJ-jhF">
-                                        <rect key="frame" x="24" y="428" width="366" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="cfh-LH-jFY"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                                    </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C6o-zc-8Eh">
-                                        <rect key="frame" x="147" y="498" width="120" height="40"/>
-                                        <color key="backgroundColor" systemColor="linkColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="120" id="kgX-Oh-0hf"/>
-                                            <constraint firstAttribute="height" constant="40" id="l1o-1f-yzV"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="Xác thực">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="8"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="didTapeedLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TUp-9s-ZOs"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OTP đã sử dụng:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8V5-7J-cSm">
-                                        <rect key="frame" x="24" y="346" width="140" height="21"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="21" id="Cqg-At-QDw"/>
-                                            <constraint firstAttribute="width" constant="140" id="hb9-Pp-FZn"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1F3-nu-NPI">
-                                        <rect key="frame" x="172" y="346.5" width="234" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vui lòng nhập OTP để đăng nhập:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uys-jx-sGJ">
-                                        <rect key="frame" x="24" y="383" width="366" height="21"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="21" id="ARW-on-k9e"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="Uys-jx-sGJ" secondAttribute="trailing" constant="24" id="0uk-kO-vXA"/>
-                                    <constraint firstItem="1F3-nu-NPI" firstAttribute="centerY" secondItem="8V5-7J-cSm" secondAttribute="centerY" id="2aA-Bi-NRp"/>
-                                    <constraint firstItem="QN4-jJ-jhF" firstAttribute="centerY" secondItem="3Cu-bh-pRd" secondAttribute="centerY" id="3Bv-ug-M1j"/>
-                                    <constraint firstItem="Uys-jx-sGJ" firstAttribute="leading" secondItem="3Cu-bh-pRd" secondAttribute="leading" constant="24" id="48I-Ow-uCk"/>
-                                    <constraint firstItem="Uys-jx-sGJ" firstAttribute="top" secondItem="8V5-7J-cSm" secondAttribute="bottom" constant="16" id="4rT-eX-eHF"/>
-                                    <constraint firstItem="QN4-jJ-jhF" firstAttribute="centerX" secondItem="3Cu-bh-pRd" secondAttribute="centerX" id="5Cg-8c-xii"/>
-                                    <constraint firstItem="1F3-nu-NPI" firstAttribute="leading" secondItem="8V5-7J-cSm" secondAttribute="trailing" constant="8" id="E61-0A-qBV"/>
-                                    <constraint firstItem="8V5-7J-cSm" firstAttribute="leading" secondItem="QN4-jJ-jhF" secondAttribute="leading" id="K1r-us-ww2"/>
-                                    <constraint firstAttribute="trailing" secondItem="QN4-jJ-jhF" secondAttribute="trailing" constant="24" id="MXT-oq-2fi"/>
-                                    <constraint firstItem="C6o-zc-8Eh" firstAttribute="top" secondItem="QN4-jJ-jhF" secondAttribute="bottom" constant="30" id="VeQ-j7-2Bu"/>
-                                    <constraint firstItem="C6o-zc-8Eh" firstAttribute="centerX" secondItem="QN4-jJ-jhF" secondAttribute="centerX" id="fmN-Rk-7rj"/>
-                                    <constraint firstItem="QN4-jJ-jhF" firstAttribute="top" secondItem="Uys-jx-sGJ" secondAttribute="bottom" constant="24" id="gRi-Nb-RFJ"/>
-                                    <constraint firstItem="QN4-jJ-jhF" firstAttribute="leading" secondItem="3Cu-bh-pRd" secondAttribute="leading" constant="24" id="rsH-US-40T"/>
-                                    <constraint firstAttribute="trailing" secondItem="1F3-nu-NPI" secondAttribute="trailing" constant="8" id="seW-8w-zl3"/>
-                                </constraints>
-                            </view>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZL7-cY-KFp">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App không còn hỗ trợ, vui lòng thử lại sau" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ECx-K3-pML">
-                                        <rect key="frame" x="16" y="438" width="382" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstItem="ECx-K3-pML" firstAttribute="leading" secondItem="ZL7-cY-KFp" secondAttribute="leading" constant="16" id="NQt-vs-Gdz"/>
-                                    <constraint firstItem="ECx-K3-pML" firstAttribute="centerY" secondItem="ZL7-cY-KFp" secondAttribute="centerY" id="SoZ-qq-YLY"/>
-                                    <constraint firstAttribute="trailing" secondItem="ECx-K3-pML" secondAttribute="trailing" constant="16" id="e1v-gZ-1cS"/>
-                                </constraints>
-                            </view>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IZ9-Qw-J3H" userLabel="Tabs">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                                 <subviews>
@@ -687,6 +594,99 @@
                                     <constraint firstItem="iEo-Td-9CN" firstAttribute="width" secondItem="Oc7-hg-Pg5" secondAttribute="width" id="vNq-bN-9G6"/>
                                 </constraints>
                             </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Cu-bh-pRd">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="OTP" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QN4-jJ-jhF">
+                                        <rect key="frame" x="24" y="428" width="366" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="cfh-LH-jFY"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C6o-zc-8Eh">
+                                        <rect key="frame" x="147" y="498" width="120" height="40"/>
+                                        <color key="backgroundColor" systemColor="linkColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="120" id="kgX-Oh-0hf"/>
+                                            <constraint firstAttribute="height" constant="40" id="l1o-1f-yzV"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Xác thực">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="didTapeedLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TUp-9s-ZOs"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OTP đã sử dụng:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8V5-7J-cSm">
+                                        <rect key="frame" x="24" y="346" width="140" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="Cqg-At-QDw"/>
+                                            <constraint firstAttribute="width" constant="140" id="hb9-Pp-FZn"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1F3-nu-NPI">
+                                        <rect key="frame" x="172" y="346.5" width="234" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vui lòng nhập OTP để đăng nhập:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uys-jx-sGJ">
+                                        <rect key="frame" x="24" y="383" width="366" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="ARW-on-k9e"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Uys-jx-sGJ" secondAttribute="trailing" constant="24" id="0uk-kO-vXA"/>
+                                    <constraint firstItem="1F3-nu-NPI" firstAttribute="centerY" secondItem="8V5-7J-cSm" secondAttribute="centerY" id="2aA-Bi-NRp"/>
+                                    <constraint firstItem="QN4-jJ-jhF" firstAttribute="centerY" secondItem="3Cu-bh-pRd" secondAttribute="centerY" id="3Bv-ug-M1j"/>
+                                    <constraint firstItem="Uys-jx-sGJ" firstAttribute="leading" secondItem="3Cu-bh-pRd" secondAttribute="leading" constant="24" id="48I-Ow-uCk"/>
+                                    <constraint firstItem="Uys-jx-sGJ" firstAttribute="top" secondItem="8V5-7J-cSm" secondAttribute="bottom" constant="16" id="4rT-eX-eHF"/>
+                                    <constraint firstItem="QN4-jJ-jhF" firstAttribute="centerX" secondItem="3Cu-bh-pRd" secondAttribute="centerX" id="5Cg-8c-xii"/>
+                                    <constraint firstItem="1F3-nu-NPI" firstAttribute="leading" secondItem="8V5-7J-cSm" secondAttribute="trailing" constant="8" id="E61-0A-qBV"/>
+                                    <constraint firstItem="8V5-7J-cSm" firstAttribute="leading" secondItem="QN4-jJ-jhF" secondAttribute="leading" id="K1r-us-ww2"/>
+                                    <constraint firstAttribute="trailing" secondItem="QN4-jJ-jhF" secondAttribute="trailing" constant="24" id="MXT-oq-2fi"/>
+                                    <constraint firstItem="C6o-zc-8Eh" firstAttribute="top" secondItem="QN4-jJ-jhF" secondAttribute="bottom" constant="30" id="VeQ-j7-2Bu"/>
+                                    <constraint firstItem="C6o-zc-8Eh" firstAttribute="centerX" secondItem="QN4-jJ-jhF" secondAttribute="centerX" id="fmN-Rk-7rj"/>
+                                    <constraint firstItem="QN4-jJ-jhF" firstAttribute="top" secondItem="Uys-jx-sGJ" secondAttribute="bottom" constant="24" id="gRi-Nb-RFJ"/>
+                                    <constraint firstItem="QN4-jJ-jhF" firstAttribute="leading" secondItem="3Cu-bh-pRd" secondAttribute="leading" constant="24" id="rsH-US-40T"/>
+                                    <constraint firstAttribute="trailing" secondItem="1F3-nu-NPI" secondAttribute="trailing" constant="8" id="seW-8w-zl3"/>
+                                </constraints>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZL7-cY-KFp">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App không còn hỗ trợ, vui lòng thử lại sau" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ECx-K3-pML">
+                                        <rect key="frame" x="16" y="438" width="382" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="ECx-K3-pML" firstAttribute="leading" secondItem="ZL7-cY-KFp" secondAttribute="leading" constant="16" id="NQt-vs-Gdz"/>
+                                    <constraint firstItem="ECx-K3-pML" firstAttribute="centerY" secondItem="ZL7-cY-KFp" secondAttribute="centerY" id="SoZ-qq-YLY"/>
+                                    <constraint firstAttribute="trailing" secondItem="ECx-K3-pML" secondAttribute="trailing" constant="16" id="e1v-gZ-1cS"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.070588235294117646" green="0.070588235294117646" blue="0.070588235294117646" alpha="1" colorSpace="calibratedRGB"/>
