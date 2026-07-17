@@ -17,13 +17,16 @@ class CouponViewController: UIViewController {
     
     @IBOutlet weak var arletImageView: UIImageView!
     
-    
-    
+    @IBOutlet weak var whiteView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.arletImageView.isHidden = true
         bgPopupView.isHidden = true
         config()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.whiteView.isHidden = true
+        }
     }
     @IBAction func didTappedBackButton(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
