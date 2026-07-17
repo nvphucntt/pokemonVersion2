@@ -19,6 +19,21 @@ class CouponViewController: UIViewController {
     
     @IBOutlet weak var whiteView: UIView!
     
+    @IBOutlet weak var constraintOpenToTop: NSLayoutConstraint!
+    
+    @IBOutlet weak var constraintUsedToTop: NSLayoutConstraint!
+    
+    @IBOutlet weak var constraintUsedToBot: NSLayoutConstraint!
+    
+    @IBOutlet weak var constraintOpenToBot: NSLayoutConstraint!
+    
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        get {
+            return .darkContent
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.arletImageView.isHidden = true
@@ -43,6 +58,18 @@ class CouponViewController: UIViewController {
     }
     
     func config() {
+        if DataStore.shared.currentDevice == .small_se || DataStore.shared.currentDevice == .small_6_7_8 {
+            constraintOpenToTop.constant = -15
+            constraintUsedToTop.constant = -15
+            constraintUsedToBot.constant = -15
+            constraintOpenToBot.constant = -15
+        } else {
+            constraintOpenToTop.constant = 0
+            constraintUsedToTop.constant = 0
+            constraintUsedToBot.constant = 0
+            constraintOpenToBot.constant = 0
+        }
+        
         couponOpenView.isHidden = DataStore.shared.isUsedCoupon
         couponUsedView.isHidden = !DataStore.shared.isUsedCoupon
     }

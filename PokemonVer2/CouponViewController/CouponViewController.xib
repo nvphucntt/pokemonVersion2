@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="24765" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24743"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -13,6 +13,10 @@
             <connections>
                 <outlet property="arletImageView" destination="piX-BL-CDH" id="VT6-Qz-njf"/>
                 <outlet property="bgPopupView" destination="Xcu-b7-uMI" id="flq-CI-XWX"/>
+                <outlet property="constraintOpenToBot" destination="iIp-pK-ymW" id="LYm-yY-Lj0"/>
+                <outlet property="constraintOpenToTop" destination="eBs-FF-uB7" id="WI1-Jr-v4k"/>
+                <outlet property="constraintUsedToBot" destination="50O-Wq-pZq" id="DOf-X8-oI5"/>
+                <outlet property="constraintUsedToTop" destination="ZoG-pe-eU5" id="gcc-Vc-f99"/>
                 <outlet property="couponOpenView" destination="XLz-ew-XIP" id="j76-O7-OOH"/>
                 <outlet property="couponUsedView" destination="QMf-z3-Fg1" id="eG7-dp-6eI"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -24,15 +28,12 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SJM-qA-EMv">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="40" id="5QB-KZ-mVD"/>
-                    </constraints>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zJw-Ud-kuZ">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XLz-ew-XIP" userLabel="coupon_open">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <rect key="frame" x="0.0" y="-15" width="414" height="911"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coupon_top" translatesAutoresizingMaskIntoConstraints="NO" id="IRZ-Wk-cfa">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="92"/>
@@ -43,7 +44,7 @@
                             </constraints>
                         </imageView>
                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hwh-Iu-6BK">
-                            <rect key="frame" x="0.0" y="92" width="414" height="804"/>
+                            <rect key="frame" x="0.0" y="92" width="414" height="819"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iq7-Ll-DDq">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="1195"/>
@@ -85,7 +86,7 @@
                             </constraints>
                         </scrollView>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coupon_bot" translatesAutoresizingMaskIntoConstraints="NO" id="ohD-Lx-HqI">
-                            <rect key="frame" x="0.0" y="806" width="414" height="90"/>
+                            <rect key="frame" x="0.0" y="821" width="414" height="90"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <color key="tintColor" systemColor="linkColor"/>
                             <constraints>
@@ -108,7 +109,7 @@
                     </constraints>
                 </view>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QMf-z3-Fg1" userLabel="coupon_used">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <rect key="frame" x="0.0" y="-15" width="414" height="911"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coupon_top" translatesAutoresizingMaskIntoConstraints="NO" id="JKy-aL-hgQ">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="92"/>
@@ -119,7 +120,7 @@
                             </constraints>
                         </imageView>
                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VdG-xj-DIe">
-                            <rect key="frame" x="0.0" y="92" width="414" height="804"/>
+                            <rect key="frame" x="0.0" y="92" width="414" height="819"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UHq-p0-2Gn">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
@@ -161,7 +162,7 @@
                             </constraints>
                         </scrollView>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="use_bot" translatesAutoresizingMaskIntoConstraints="NO" id="C0h-gC-e81">
-                            <rect key="frame" x="0.0" y="806" width="414" height="90"/>
+                            <rect key="frame" x="0.0" y="821" width="414" height="90"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <color key="tintColor" systemColor="linkColor"/>
                             <constraints>
@@ -169,7 +170,7 @@
                             </constraints>
                         </imageView>
                         <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="use_001" translatesAutoresizingMaskIntoConstraints="NO" id="piX-BL-CDH">
-                            <rect key="frame" x="147" y="388" width="120" height="120"/>
+                            <rect key="frame" x="147" y="395.5" width="120" height="120"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="120" id="SNh-PG-mFh"/>
                                 <constraint firstAttribute="width" constant="120" id="qWv-t7-Dbq"/>
@@ -192,8 +193,15 @@
                         <constraint firstAttribute="bottom" secondItem="VdG-xj-DIe" secondAttribute="bottom" id="ydH-Ct-HNf"/>
                     </constraints>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SJM-qA-EMv">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="5QB-KZ-mVD"/>
+                    </constraints>
+                </view>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xcu-b7-uMI">
-                    <rect key="frame" x="0.0" y="92" width="414" height="804"/>
+                    <rect key="frame" x="0.0" y="77" width="414" height="819"/>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AAw-p7-3Kl">
@@ -217,10 +225,6 @@
                         <action selector="didTappdCoupon:" destination="-1" eventType="touchUpInside" id="e7X-qP-pe5"/>
                     </connections>
                 </button>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zJw-Ud-kuZ">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -238,11 +242,11 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Kbn-oa-OCj" secondAttribute="trailing" id="W7q-Mf-NUq"/>
                 <constraint firstItem="AAw-p7-3Kl" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="YES-ym-MBw"/>
                 <constraint firstAttribute="bottom" secondItem="Kbn-oa-OCj" secondAttribute="bottom" id="YNP-Q7-GoZ"/>
-                <constraint firstItem="QMf-z3-Fg1" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ZoG-pe-eU5"/>
+                <constraint firstItem="QMf-z3-Fg1" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="-15" id="ZoG-pe-eU5"/>
                 <constraint firstAttribute="trailing" secondItem="zJw-Ud-kuZ" secondAttribute="trailing" id="dFo-QZ-j0J"/>
                 <constraint firstItem="SJM-qA-EMv" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="da9-J2-5jc"/>
                 <constraint firstItem="Xcu-b7-uMI" firstAttribute="top" secondItem="Hwh-Iu-6BK" secondAttribute="top" id="dfc-2A-qbC"/>
-                <constraint firstItem="XLz-ew-XIP" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="eBs-FF-uB7"/>
+                <constraint firstItem="XLz-ew-XIP" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="-15" id="eBs-FF-uB7"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Xcu-b7-uMI" secondAttribute="trailing" id="f8M-Gg-oMX"/>
                 <constraint firstItem="Kbn-oa-OCj" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="fm0-uG-TwE"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="AAw-p7-3Kl" secondAttribute="trailing" id="jvm-8b-Sdn"/>
@@ -263,7 +267,7 @@
         <image name="use_003" width="828" height="255"/>
         <image name="use_bot" width="828" height="177"/>
         <systemColor name="linkColor">
-            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

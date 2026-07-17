@@ -20,6 +20,11 @@ enum Status {
 class ViewController: UIViewController {
     
     @IBOutlet weak var tab01: UIView!
+    
+    @IBOutlet weak var tab012: UIView!
+    
+    @IBOutlet weak var tab013: UIView!
+    
     @IBOutlet weak var tab02: UIView!
     @IBOutlet weak var tab03: UIView!
     @IBOutlet weak var tab04: UIView!
@@ -43,11 +48,20 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var noticeLabel: UILabel!
     
+    @IBOutlet weak var constraintTabViewToTop: NSLayoutConstraint!
+    
+    @IBOutlet weak var constraintTabbarToBottom: NSLayoutConstraint!
+    
+    @IBOutlet weak var heightTopView: NSLayoutConstraint!
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         get {
             return .lightContent
         }
     }
+    
+    var random = 0
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +70,16 @@ class ViewController: UIViewController {
         let count = DataStore.shared.countPassword
         let x = count + 1
         DataStore.shared.update(countPassword: x)
+        self.random = Int.random(in: 0...2)
+        if DataStore.shared.currentDevice == .small_se || DataStore.shared.currentDevice == .small_6_7_8 {
+            constraintTabbarToBottom.constant = -15
+            constraintTabViewToTop.constant = -20
+            heightTopView.constant = 20
+        } else {
+            constraintTabbarToBottom.constant = 0
+            constraintTabViewToTop.constant = 0
+            heightTopView.constant = 40
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -103,7 +127,9 @@ class ViewController: UIViewController {
         
         switch self.statusHome {
         case .tab1:
-            tab01.isHidden = false
+            tab01.isHidden = !(random == 0)
+            tab012.isHidden = !(random == 1)
+            tab013.isHidden = !(random == 2)
             tab02.isHidden = true
             tab03.isHidden = true
             tab04.isHidden = true
@@ -111,6 +137,8 @@ class ViewController: UIViewController {
             tabbarImageView.image = UIImage(named: "tab_home_01")
         case .tab2:
             tab01.isHidden = true
+            tab012.isHidden = true
+            tab013.isHidden = true
             tab02.isHidden = false
             tab03.isHidden = true
             tab04.isHidden = true
@@ -118,6 +146,8 @@ class ViewController: UIViewController {
             tabbarImageView.image = UIImage(named: "tab_home_02")
         case .tab3:
             tab01.isHidden = true
+            tab012.isHidden = true
+            tab013.isHidden = true
             tab02.isHidden = true
             tab03.isHidden = false
             tab04.isHidden = true
@@ -125,6 +155,8 @@ class ViewController: UIViewController {
             tabbarImageView.image = UIImage(named: "tab_home_03")
         case .tab4:
             tab01.isHidden = true
+            tab012.isHidden = true
+            tab013.isHidden = true
             tab02.isHidden = true
             tab03.isHidden = true
             tab04.isHidden = false
@@ -132,6 +164,8 @@ class ViewController: UIViewController {
             tabbarImageView.image = UIImage(named: "tab_home_04")
         case .tab5:
             tab01.isHidden = true
+            tab012.isHidden = true
+            tab013.isHidden = true
             tab02.isHidden = true
             tab03.isHidden = true
             tab04.isHidden = true

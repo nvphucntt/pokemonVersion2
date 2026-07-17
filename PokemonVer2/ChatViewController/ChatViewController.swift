@@ -10,10 +10,32 @@ import NVActivityIndicatorView
 
 class ChatViewController: UIViewController {
 
+    @IBOutlet weak var chatFullView: UIImageView!
+    
+    @IBOutlet weak var chatSmallView: UIView!
+    
+    @IBOutlet weak var heightTopView: NSLayoutConstraint!
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        get {
+            return .lightContent
+        }
+    }
+    
     var activityIndicator: NVActivityIndicatorView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if DataStore.shared.currentDevice == .small_se || DataStore.shared.currentDevice == .small_6_7_8 {
+            chatFullView.isHidden = true
+            chatSmallView.isHidden = false
+            heightTopView.constant = 20
+        } else {
+            chatFullView.isHidden = false
+            chatSmallView.isHidden = true
+            heightTopView.constant = 40
+        }
+        
         // Do any additional setup after loading the view.
     }
 
