@@ -64,7 +64,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             case .large_xsmax_11ProMax:
             print("👉 Màn hình Pro Max (iPhone xsmax_11ProMax)")
         }
-        DataStore.shared.update(isLogin: false)
         return true
     }
 
