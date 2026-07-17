@@ -245,6 +245,12 @@ class ViewController: UIViewController {
         configUI()
     }
     
+    
+    @IBAction func didTappedChatIto(_ sender: Any) {
+        let chatVC = ChatViewController()
+        self.navigationController?.pushViewController(chatVC, animated: true)
+    }
+    
     func checkPassword(_ password: String, validView: UIView) -> Bool {
         view.endEditing(true)
         if DataStore.shared.checkPass(pass: password) {

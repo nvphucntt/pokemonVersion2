@@ -9,6 +9,9 @@ import Foundation
 class DataStore {
     static let shared = DataStore()
     
+    var isUsedCoupon: Bool = false
+    
+    
     let listUserName: [String] = ["phudano1","phudano2","phudano3","phudano4", "phudano5", "phudano6"]
     var allPass: [String] = []
     
