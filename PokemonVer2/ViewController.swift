@@ -67,9 +67,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
             view.addGestureRecognizer(tap)
-        let count = DataStore.shared.countPassword
-        let x = count + 1
-        DataStore.shared.update(countPassword: x)
         self.random = Int.random(in: 0...2)
         if DataStore.shared.currentDevice == .small_se || DataStore.shared.currentDevice == .small_6_7_8 {
             constraintTabbarToBottom.constant = -15
@@ -93,7 +90,7 @@ class ViewController: UIViewController {
             self.emptyView.isHidden = !DataStore.shared.isAfterEventDate()
             self.noticeLabel.text = "App không còn hỗ trợ, vui lòng xóa app và tải lại."
         } else {
-            self.noticeLabel.text = "Đã sử dụng hết \(DataStore.shared.countPassword) OTP cho ngày hôm nay."
+            self.noticeLabel.text = "Đã sử dụng hết \(DataStore.shared.maxCount) OTP cho ngày hôm nay. \n Vui lòng gỡ app và tải lại."
             self.emptyView.isHidden = false
         }
         self.loginView.isHidden = DataStore.shared.isLogin
