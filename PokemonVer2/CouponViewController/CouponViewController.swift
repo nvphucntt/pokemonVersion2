@@ -92,7 +92,6 @@ extension CouponViewController: PopupDelegate {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
             self.arletImageView.isHidden = true
         }
-        DataStore.shared.isUsedCoupon = true
         bgPopupView.isHidden = true
         self.config()
     }

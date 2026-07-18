@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import NVActivityIndicatorView
 
 enum Status {
     case tab1
@@ -39,7 +38,6 @@ class ViewController: UIViewController {
     
     let screenBounds = UIScreen.main.bounds
     var statusHome: Status = .tab1
-    var activityIndicator: NVActivityIndicatorView!
     
     @IBOutlet weak var countOTP: UILabel!
     
@@ -54,6 +52,10 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var heightTopView: NSLayoutConstraint!
     
+    
+    @IBOutlet weak var actionLoginButton: UIButton!
+    
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         get {
             return .lightContent
@@ -61,7 +63,6 @@ class ViewController: UIViewController {
     }
     
     var random = 0
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,23 +78,21 @@ class ViewController: UIViewController {
             constraintTabViewToTop.constant = 0
             heightTopView.constant = 40
         }
+        
+        self.countOTP.text = "\(DataStore.shared.countPassword)"
+        self.emptyView.isHidden = false
+        self.actionLoginButton.isHidden = DataStore.shared.isAfterEventDate()
+        if DataStore.shared.isAfterEventDate() {
+            self.noticeLabel.text = "App không còn hỗ trợ, vui lòng xóa app và tải lại."
+        } else {
+            self.noticeLabel.text = "Đã sử dụng OTP. \n Vui lòng đăng nhập OTP mới."
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
-        self.countOTP.text = "\(DataStore.shared.countPassword)"
-        if DataStore.shared.maxCount == 0 {
-            DataStore.shared.update(maxCount: 5)
-        }
-        if DataStore.shared.countPassword <= DataStore.shared.maxCount {
-            self.emptyView.isHidden = !DataStore.shared.isAfterEventDate()
-            self.noticeLabel.text = "App không còn hỗ trợ, vui lòng xóa app và tải lại."
-        } else {
-            self.noticeLabel.text = "Đã sử dụng hết \(DataStore.shared.maxCount) OTP cho ngày hôm nay. \n Vui lòng gỡ app và tải lại."
-            self.emptyView.isHidden = false
-        }
-        self.loginView.isHidden = DataStore.shared.isLogin
+        
         
         self.statusHome = .tab1
         self.configUI()
@@ -101,23 +100,6 @@ class ViewController: UIViewController {
     
     @objc func dismissKeyboard() {
         view.endEditing(true)
-    }
-    
-    func showLoadingView() {
-        let frame = CGRect(x: 0, y: 0, width: 35, height: 35)
-        activityIndicator = NVActivityIndicatorView(frame: frame,
-                                                    type: .ballSpinFadeLoader,
-                                                    color: .red,
-                                                    padding: 0)
-        self.activityIndicator.stopAnimating()
-        activityIndicator.center = view.center
-        view.addSubview(activityIndicator)
-        
-        activityIndicator.startAnimating()
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-            self.activityIndicator.stopAnimating()
-        }
     }
     
     func configUI() {
@@ -171,11 +153,26 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBAction func didTappedEmptyButton(_ sender: Any) {
+        self.emptyView.isHidden = true
+        if DataStore.shared.isLogin {
+            if DataStore.shared.isUsedCoupon {
+                self.loginView.isHidden = false
+                DataStore.shared.update(isUsedCoupon: false)
+            } else {
+                self.loginView.isHidden = true
+            }
+        } else {
+            self.loginView.isHidden = false
+            DataStore.shared.update(isUsedCoupon: false)
+        }
+    }
+    
     @IBAction func didTapeedLogin(_ sender: Any) {
         let password = passwordTextField.text ?? ""
         let isValid = checkPassword(password, validView: loginView)
         if isValid {
-            DataStore.shared.update(isLogin: isValid)
+            DataStore.shared.update(isLogin: true)
         } else {
             DataStore.shared.update(isLogin: false)
             showWrongPasswordAlert(on: self)
@@ -224,8 +221,7 @@ class ViewController: UIViewController {
     func checkPassword(_ password: String, validView: UIView) -> Bool {
         view.endEditing(true)
         if DataStore.shared.checkPass(pass: password) {
-            showLoadingView()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                 validView.isHidden = true
             }
             return true
@@ -245,12 +241,11 @@ class ViewController: UIViewController {
     }
     
     func showCountLogin(on viewController: UIViewController) {
-        let total = DataStore.shared.maxCount
         let use = DataStore.shared.countPassword
         
         let alert = UIAlertController(
             title: "ERROR",
-            message: "Đã sử dụng \(use)/ \(total) OTP \n Chỉ còn lại \(total - use) OTP",
+            message: "Đã sử dụng \(use) OTP ",
             preferredStyle: .alert
         )
         alert.addAction(UIAlertAction(title: "OK", style: .default))

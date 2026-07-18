@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import NVActivityIndicatorView
 
 class ChatViewController: UIViewController {
 
@@ -22,7 +21,6 @@ class ChatViewController: UIViewController {
         }
     }
     
-    var activityIndicator: NVActivityIndicatorView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -63,25 +61,6 @@ class ChatViewController: UIViewController {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
             overlay.isHidden = true
-            let chatVC = CouponViewController()
-            self.navigationController?.pushViewController(chatVC, animated: true)
-        }
-    }
-    
-    func showLoadingView() {
-        let frame = CGRect(x: 0, y: 0, width: 35, height: 35)
-        activityIndicator = NVActivityIndicatorView(frame: frame,
-                                                    type: .ballSpinFadeLoader,
-                                                    color: .white,
-                                                    padding: 0)
-        self.activityIndicator.stopAnimating()
-        activityIndicator.center = view.center
-        view.addSubview(activityIndicator)
-        
-        activityIndicator.startAnimating()
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            self.activityIndicator.stopAnimating()
             let chatVC = CouponViewController()
             self.navigationController?.pushViewController(chatVC, animated: true)
         }

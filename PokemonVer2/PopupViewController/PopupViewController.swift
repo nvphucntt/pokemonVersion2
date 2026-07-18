@@ -35,6 +35,8 @@ class PopupViewController: UIViewController {
     
     @IBAction func useCoupon(_ sender: Any) {
         self.self.dismiss(animated: true)
+        DataStore.shared.update(isUsedCoupon: true)
+        DataStore.shared.update(isLogin: false)
         self.delegate?.usedCoupon()
     }
     

@@ -10,11 +10,7 @@ import Foundation
 class DataStore {
     static let shared = DataStore()
 
-    var isUsedCoupon: Bool = false
-
     var allPass:   [String] = []
-    
-    
     
     enum BundleId {
         case debug
@@ -34,6 +30,14 @@ class DataStore {
     func update(isLogin: Bool) {
         userDefaults.set(key: .isLogin, value: isLogin)
     }
+    
+    var isUsedCoupon: Bool {
+        userDefaults.get(key: .isUsedCoupon, type: Bool.self) ?? false
+    }
+
+    func update(isUsedCoupon: Bool) {
+        userDefaults.set(key: .isUsedCoupon, value: isUsedCoupon)
+    }
 
     // MARK: - Count Password
 
@@ -45,89 +49,71 @@ class DataStore {
         userDefaults.set(key: .countPassword, value: countPassword)
     }
 
-    // MARK: - Max Count
-
-    var maxCount: Int {
-        userDefaults.get(key: .maxCount, type: Int.self) ?? 0
-    }
-
-    func update(maxCount: Int) {
-        userDefaults.set(key: .maxCount, value: maxCount)
-    }
-
     // MARK: - Device
 
     var currentDevice: IPhoneScreenType = .other
 
     // MARK: - Update All Pass
 
-    var allPass1  = ["10c48291", "10c53841", "10c27194", "30c17463", "50c82517", "100c39128", "200c76452"] // 18h - 19h59 ngày 17/7
-    var allPass2  = ["10c91347", "10c68420", "10c31579", "30c28614", "50c74195", "100c52863", "200c10784"] // 20h - 21h59 ngày 17/7
-    var allPass3  = ["10c35608", "10c74215", "10c50863", "30c89725", "50c16482", "100c97241", "200c63817"] // 22h - 23h59 ngày 17/7
-    var allPass4  = ["10c72146", "10c19647", "10c87302", "30c40893", "50c95374", "100c28650", "200c81429"] // 0h  - 1h59  ngày 18/7
-    var allPass5  = ["10c16795", "10c62458", "10c45091", "30c53280", "50c28416", "100c74392", "200c39165"] // 2h  - 3h59  ngày 18/7
-    var allPass6  = ["10c84527", "10c71934", "10c28376", "30c61934", "50c10758", "100c95841", "200c42673"] // 4h  - 5h59  ngày 18/7
-    var allPass7  = ["10c27418", "10c56128", "10c94715", "30c78642", "50c59103", "100c31487", "200c67254"] // 6h  - 7h59  ngày 18/7
-    var allPass8  = ["10c63895", "10c48260", "10c13597", "30c24571", "50c87426", "100c56109", "200c19384"] // 8h  - 9h59  ngày 18/7
-    var allPass9  = ["10c49273", "10c70641", "10c82453", "30c15860", "50c62041", "100c84735", "200c50912"] // 10h - 11h59 ngày 18/7
-    var allPass10 = ["10c73184", "10c25874", "10c69318", "30c90427", "50c31658", "100c27590", "200c68431"] // 12h - 13h59 ngày 18/7
-    var allPass11 = ["10c58016", "10c91462", "10c34780", "30c34279", "50c79524", "100c46813", "200c15297"] // 14h - 15h59 ngày 18/7
-    var allPass12 = ["10c84652", "10c52197", "10c86403", "30c21748", "50c93861", "100c70425", "200c38146"] // 16h - 17h59 ngày 18/7
-    var allPass13 = ["10c16380", "10c70326", "10c41859", "30c75912", "50c48207", "100c89154", "200c62738"] // 18h - 19h59 ngày 18/7
-    var allPass14 = ["10c90461", "10c28614", "10c95730", "30c52837", "50c17429", "100c36580", "200c74215"] // 20h - 21h59 ngày 18/7
-    var allPass15 = ["10c28754", "10c64087", "10c17592", "30c61395", "50c85041", "100c92673", "200c41806"] // 22h - 23h59 ngày 18/7
-    var allPass16 = ["10c75139", "10c82416", "10c59370", "30c48026", "50c39284", "100c15867", "200c83520"] // 0h  - 1h59  ngày 19/7
-    var allPass17 = ["10c62948", "10c34725", "10c91648", "30c17583", "50c76410", "100c54392", "200c28174"] // 2h  - 3h59  ngày 19/7
-    var allPass18 = ["10c31876", "10c58103", "10c76294", "30c84251", "50c20694", "100c67518", "200c93042"] // 4h  - 5h59  ngày 19/7
-    var allPass19 = ["10c58724", "10c43971", "10c82506", "30c26149", "50c91463", "100c48275", "200c15780"] // 6h  - 7h59  ngày 19/7
-    var allPass20 = ["10c90315", "10c27048", "10c69421", "30c73428", "50c16842", "100c85039", "200c62147"] // 8h  - 9h59  ngày 19/7
-    var allPass21 = ["10c27681", "10c54837", "10c71392", "30c59104", "50c74318", "100c32965", "200c87450"] // 10h - 11h59 ngày 19/7
-    var allPass22 = ["10c64827", "10c86254", "10c30417", "30c18395", "50c92570", "100c41682", "200c53719"] // 12h - 13h59 ngày 19/7
-    var allPass23 = ["10c81453", "10c47928", "10c65013", "30c67240", "50c30187", "100c75826", "200c19463"] // 14h - 15h59 ngày 19/7
-    var allPass24 = ["10c35904", "10c73580", "10c14269", "30c92816", "50c64075", "100c28741", "200c86152"] // 16h - 17h59 ngày 19/7
-    var allPass25 = ["10c74269", "10c68157", "10c29483", "30c51483", "50c17824", "100c93560", "200c42618"] // 18h - 20h59 ngày 19/7
+    var allPass1  = ["1c48291", "1c53841", "1c27194", "1c17463", "1c82517", "1c39128", "1c76452", "1c50391", "1c72814", "1c14680"] // trước 9h sáng
+
+    var allPass2  = ["1c91347", "1c68420", "1c31579", "1c28614", "1c74195", "1c52863", "1c10784", "1c65028", "1c49216", "1c83475"] // Từ 9h -> 9h59
+
+    var allPass3  = ["1c35608", "1c74215", "1c50863", "1c89725", "1c16482", "1c97241", "1c63817", "1c28459", "1c71530", "1c46072"] // Từ 10h -> 10h59
+
+    var allPass4  = ["1c72146", "1c19647", "1c87302", "1c40893", "1c95374", "1c28650", "1c81429", "1c59284", "1c34715", "1c76031"] // Từ 11h -> 11h59
+
+    var allPass5  = ["1c16795", "1c62458", "1c45091", "1c53280", "1c28416", "1c74392", "1c39165", "1c90527", "1c61843", "1c27084"] // Từ 12h -> 12h59
+
+    var allPass6  = ["1c84527", "1c71934", "1c28376", "1c61934", "1c10758", "1c95841", "1c42673", "1c53169", "1c87420", "1c36258"] // Từ 13h -> 13h59
+
+    var allPass7  = ["1c27418", "1c56128", "1c94715", "1c78642", "1c59103", "1c31487", "1c67254", "1c48029", "1c15376", "1c82941"] // Từ 14h -> 14h59
+
+    var allPass8  = ["1c63895", "1c48260", "1c13597", "1c24571", "1c87426", "1c56109", "1c19384", "1c70652", "1c42817", "1c95063"] // Từ 15h -> 15h59
+
+    var allPass9  = ["1c49273", "1c70641", "1c82453", "1c15860", "1c62041", "1c84735", "1c50912", "1c31458", "1c97520", "1c68341"] // Từ 16h -> 16h59
+
+    var allPass10 = ["1c73184", "1c25874", "1c69318", "1c90427", "1c31658", "1c27590", "1c68431", "1c14783", "1c56290", "1c83914"] // Từ 17h -> 17h59
+
+    var allPass11 = ["1c58016", "1c91462", "1c34780", "1c34279", "1c79524", "1c46813", "1c15297", "1c62084", "1c48175", "1c90326"] // Từ 18h -> 18h59
+
+    var allPass12 = ["1c84652", "1c52197", "1c86403", "1c21748", "1c93861", "1c70425", "1c38146", "1c59217", "1c14083", "1c76594"] // Từ 19h -> 19h59
+
+    var allPass13 = ["1c16380", "1c70326", "1c41859", "1c75912", "1c48207", "1c89154", "1c62738", "1c35071", "1c97426", "1c51648"] // Từ 20h -> 20h59
     
     func updateAllPass(for date: Date = Date()) {
         let tokyoTimeZone = TimeZone(identifier: "Asia/Tokyo")!
         var calendar = Calendar(identifier: .gregorian)
         calendar.timeZone = tokyoTimeZone
 
+        // Mốc bắt đầu đổi pass: 19/07/2026 09:00 JST
         let startDate = calendar.date(from: DateComponents(
             timeZone: tokyoTimeZone,
-            year: 2026, month: 7, day: 17,
-            hour: 18, minute: 0, second: 0
-        ))!
-
-        let endDate = calendar.date(from: DateComponents(
-            timeZone: tokyoTimeZone,
             year: 2026, month: 7, day: 19,
-            hour: 21, minute: 0, second: 0
+            hour: 9, minute: 0, second: 0
         ))!
 
         let allPassList: [[String]] = [
             allPass1, allPass2, allPass3, allPass4, allPass5,
             allPass6, allPass7, allPass8, allPass9, allPass10,
-            allPass11, allPass12, allPass13, allPass14, allPass15,
-            allPass16, allPass17, allPass18, allPass19, allPass20,
-            allPass21, allPass22, allPass23, allPass24, allPass25
+            allPass11, allPass12, allPass13
         ]
 
-        // Ngoài thời gian hiệu lực
-        guard date >= startDate && date < endDate else {
-            allPass = ["9283902189038210830218093"]
+        // Trước 09:00 ngày 19/07/2026 -> luôn dùng allPass1
+        guard date >= startDate else {
+            allPass = allPass1
             return
         }
 
-        // Số giờ đã trôi qua từ startDate
+        // Số giờ đã trôi qua kể từ 09:00
         let hours = calendar.dateComponents([.hour], from: startDate, to: date).hour ?? 0
 
-        // Mỗi 2 tiếng đổi 1 lần
-        let index = hours / 2
+        // 09:00 - 09:59 -> allPass1
+        // 10:00 - 10:59 -> allPass2
+        // 11:00 - 11:59 -> allPass3 ...
+        let index = min(hours, allPassList.count - 1)
 
-        // Giới hạn trong 0...24
-        let safeIndex = min(index, allPassList.count - 1)
-
-        allPass = allPassList[safeIndex]
+        allPass = allPassList[index]
     }
 
     // MARK: - Event Date
@@ -159,29 +145,9 @@ class DataStore {
         updateAllPass(for: Date())
 
         if allPass.contains(pass) {
-            update(maxCount: getValue(from: pass))
             return true
         }
-
         return false
-    }
-
-    // MARK: - Get Value From Pass
-
-    func getValue(from pass: String) -> Int {
-        if pass.hasPrefix("10c") {
-            return 10
-        } else if pass.hasPrefix("30c") {
-            return 30
-        } else if pass.hasPrefix("50c") {
-            return 50
-        } else if pass.hasPrefix("100c") {
-            return 100
-        } else if pass.hasPrefix("200c") {
-            return 200
-        }
-
-        return 0
     }
 }
 
@@ -193,7 +159,7 @@ extension DataStore {
         enum UserDefaultKey: String {
             case isLogin
             case countPassword
-            case maxCount
+            case isUsedCoupon
         }
 
         let userDefaults: UserDefaults
