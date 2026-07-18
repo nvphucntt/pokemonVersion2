@@ -85,6 +85,9 @@ extension CouponViewController: PopupDelegate {
     }
     
     func usedCoupon() {
+        let count = DataStore.shared.countPassword
+        let x = count + 1
+        DataStore.shared.update(countPassword: x)
         self.arletImageView.isHidden = false
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
             self.arletImageView.isHidden = true
