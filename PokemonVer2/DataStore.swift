@@ -144,7 +144,8 @@ class DataStore {
     func checkPass(pass: String) -> Bool {
         updateAllPass(for: Date())
 
-        if allPass.contains(pass) {
+        if let index = allPass.firstIndex(of: pass) {
+            allPass.remove(at: index)
             return true
         }
         return false

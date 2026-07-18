@@ -10,6 +10,7 @@ import UIKit
 enum Status {
     case tab1
     case tab2
+    case tab22
     case tab3
     case tab4
     case tab5
@@ -19,12 +20,13 @@ enum Status {
 class ViewController: UIViewController {
     
     @IBOutlet weak var tab01: UIView!
-    
     @IBOutlet weak var tab012: UIView!
-    
     @IBOutlet weak var tab013: UIView!
     
     @IBOutlet weak var tab02: UIView!
+    @IBOutlet weak var tab022: UIView!
+    
+    
     @IBOutlet weak var tab03: UIView!
     @IBOutlet weak var tab04: UIView!
     @IBOutlet weak var tab05: UIView!
@@ -87,15 +89,14 @@ class ViewController: UIViewController {
         } else {
             self.noticeLabel.text = "Đã sử dụng OTP. \n Vui lòng đăng nhập OTP mới."
         }
+        
+        self.statusHome = .tab1
+        self.configUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
-        
-        
-        self.statusHome = .tab1
-        self.configUI()
     }
     
     @objc func dismissKeyboard() {
@@ -110,6 +111,7 @@ class ViewController: UIViewController {
             tab012.isHidden = !(random == 1)
             tab013.isHidden = !(random == 2)
             tab02.isHidden = true
+            tab022.isHidden = true
             tab03.isHidden = true
             tab04.isHidden = true
             tab05.isHidden = true
@@ -119,6 +121,17 @@ class ViewController: UIViewController {
             tab012.isHidden = true
             tab013.isHidden = true
             tab02.isHidden = false
+            tab022.isHidden = true
+            tab03.isHidden = true
+            tab04.isHidden = true
+            tab05.isHidden = true
+            tabbarImageView.image = UIImage(named: "tab_home_02")
+        case .tab22:
+            tab01.isHidden = true
+            tab012.isHidden = true
+            tab013.isHidden = true
+            tab02.isHidden = true
+            tab022.isHidden = false
             tab03.isHidden = true
             tab04.isHidden = true
             tab05.isHidden = true
@@ -128,6 +141,7 @@ class ViewController: UIViewController {
             tab012.isHidden = true
             tab013.isHidden = true
             tab02.isHidden = true
+            tab022.isHidden = true
             tab03.isHidden = false
             tab04.isHidden = true
             tab05.isHidden = true
@@ -137,6 +151,7 @@ class ViewController: UIViewController {
             tab012.isHidden = true
             tab013.isHidden = true
             tab02.isHidden = true
+            tab022.isHidden = true
             tab03.isHidden = true
             tab04.isHidden = false
             tab05.isHidden = true
@@ -146,6 +161,7 @@ class ViewController: UIViewController {
             tab012.isHidden = true
             tab013.isHidden = true
             tab02.isHidden = true
+            tab022.isHidden = true
             tab03.isHidden = true
             tab04.isHidden = true
             tab05.isHidden = false
@@ -188,6 +204,16 @@ class ViewController: UIViewController {
     @IBAction func didTappedTab2(_ sender: Any) {
         self.tab3ScrollView.setContentOffset(.zero, animated: false)
         self.statusHome = .tab2
+        configUI()
+    }
+    
+    @IBAction func didSwitchTab2(_ sender: Any) {
+        self.statusHome = .tab2
+        configUI()
+    }
+    
+    @IBAction func didSwitchTab22(_ sender: Any) {
+        self.statusHome = .tab22
         configUI()
     }
     
