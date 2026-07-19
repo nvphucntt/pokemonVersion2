@@ -97,7 +97,7 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
-        DataStore.shared.updateLogin()
+//        DataStore.shared.updateLogin()
     }
     
     @objc func dismissKeyboard() {
