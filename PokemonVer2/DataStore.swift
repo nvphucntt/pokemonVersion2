@@ -187,6 +187,43 @@ class DataStore {
 
         return Date() >= targetDate
     }
+    
+    private var lastLoginQuarterIndex: Int?
+
+    func updateLogin(for date: Date = Date()) {
+        let tokyoTimeZone = TimeZone(identifier: "Asia/Tokyo")!
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.timeZone = tokyoTimeZone
+
+        // Mốc bắt đầu: 09:00 ngày 19/07/2026 (JST)
+        let startDate = calendar.date(from: DateComponents(
+            timeZone: tokyoTimeZone,
+            year: 2026,
+            month: 7,
+            day: 19,
+            hour: 9,
+            minute: 0,
+            second: 0
+        ))!
+
+        // Trước 09:00 thì không làm gì
+        guard date >= startDate else {
+            return
+        }
+
+        // Xác định đang ở khung 15 phút thứ bao nhiêu
+        let minutes = calendar.dateComponents([.minute], from: startDate, to: date).minute ?? 0
+        let quarterIndex = minutes / 15
+
+        // Nếu vẫn cùng khung 15 phút thì bỏ qua
+        guard lastLoginQuarterIndex != quarterIndex else {
+            return
+        }
+
+        lastLoginQuarterIndex = quarterIndex
+        update(isLogin: false)
+    }
+    
 
     // MARK: - Check Pass
 
